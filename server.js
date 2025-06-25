@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const propiedadesRoutes = require('./routes/propiedades');
+const authRoutes = require('./routes/auth'); // <-- nuevo
 const path = require('path');
 require('dotenv').config();
 
@@ -15,6 +16,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Rutas
 app.use('/terrenos', propiedadesRoutes);
+app.use('/api', authRoutes); // <-- agrega esta línea
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
